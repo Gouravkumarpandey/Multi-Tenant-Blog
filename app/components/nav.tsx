@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import {UserButton} from '@clerk/nextjs'
+import {OrganizationSwitcher} from '@clerk/nextjs';
 
 const Nav: React.FC = () =>{
     return (
@@ -9,7 +10,8 @@ const Nav: React.FC = () =>{
         <div> 
             <h1 className='font-semibold text-2xl'>Blog Application</h1>
         </div>
-        <div>
+        <div className="flex gap-4 justify-center items-center">
+            <OrganizationSwitcher afterSelectOrganizationUrl="/org/:slug" />
             <UserButton />
          </div>
     </nav>
