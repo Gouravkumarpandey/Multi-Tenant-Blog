@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏢 Multi-Tenant Blog App with Subdomain Routing
 
-## Getting Started
+A full-stack multi-tenant blog application built with **Next.js**, **PostgreSQL**, **Drizzle ORM**, and **Clerk authentication**. It supports subdomain-based multi-tenancy, allowing each user to manage their own blog instance with a unique subdomain like `user1.blogsite.com`.
 
-First, run the development server:
+---
+
+## 🧾 What is a Tenant?
+
+In software architecture, a **tenant** is an individual user or organization that shares the same application but has isolated data and configurations.  
+In this app:
+
+- Each tenant has their **own blog**
+- Each blog is accessible via a **custom subdomain**
+- All data is securely separated per tenant
+
+This architecture is scalable and ideal for platforms like blogging sites, SaaS dashboards, and portfolio generators.
+
+---
+
+## 🧰 Tools & Technologies Used
+
+| Purpose            | Tool / Technology               |
+|--------------------|---------------------------------|
+| **Frontend**       | Next.js (App Router)            |
+| **Styling**        | Tailwind CSS                    |
+| **State/Form**     | React, Zod                      |
+| **ORM**            | Drizzle ORM                     |
+| **Database**       | PostgreSQL                      |
+| **Authentication** | Clerk.dev                       |
+| **Hosting**        | Vercel (with wildcard domain)   |
+| **Dev Environment**| Docker, VSCode                  |
+| **Package Manager**| pnpm / npm                      |
+| **Version Control**| Git + GitHub                    |
+
+---
+
+## 🐳 Docker & PostgreSQL Setup
+
+You can run the PostgreSQL database using Docker to simplify local development.
+
+### Start PostgreSQL using Docker
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+docker run --name blog-postgres \
+  -e POSTGRES_USER=postgres \
+  -e POSTGRES_PASSWORD=postgres \
+  -e POSTGRES_DB=multi_tenant_blog \
+  -p 5432:5432 \
+  -d postgres
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```Connect with Drizzle ORM
+Set the .env like:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/multi_tenant_blog
