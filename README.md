@@ -23,13 +23,13 @@ This architecture is scalable and ideal for platforms like blogging sites, SaaS 
 |--------------------|---------------------------------|
 | **Frontend**       | Next.js (App Router)            |
 | **Styling**        | Tailwind CSS                    |
-| **State/Form**     | React, Zod                      |
+| **State/Form**     | React                           |
 | **ORM**            | Drizzle ORM                     |
 | **Database**       | PostgreSQL                      |
 | **Authentication** | Clerk.dev                       |
 | **Hosting**        | Vercel (with wildcard domain)   |
 | **Dev Environment**| Docker, VSCode                  |
-| **Package Manager**| pnpm / npm                      |
+| **Package Manager**| pnpm                            |
 | **Version Control**| Git + GitHub                    |
 
 ---
@@ -40,7 +40,7 @@ You can run the PostgreSQL database using Docker to simplify local development.
 
 ### Start PostgreSQL using Docker
 
-```bash
+```
 docker run --name blog-postgres \
   -e POSTGRES_USER=postgres \
   -e POSTGRES_PASSWORD=postgres \
@@ -48,8 +48,13 @@ docker run --name blog-postgres \
   -p 5432:5432 \
   -d postgres
 
-```Connect with Drizzle ORM
-Set the .env like:
 
 
-DATABASE_URL=postgresql://postgres:postgres@localhost:5432/multi_tenant_blog
+
+
+
+
+
+
+
+
