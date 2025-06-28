@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "db:studio": "drizzle-kit studio",
+    "db:push": "drizzle-kit push",
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",

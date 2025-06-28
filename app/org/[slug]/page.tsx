@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import * as React from 'react';
+import { createBlog} from './action';
+import { useOrganization} from '@clerk/nextjs';
 
 
 export default function OrgLandingPage(){
@@ -12,6 +14,16 @@ export default function OrgLandingPage(){
     const[blogContent, setBlogContent] = React.useState('');
     const[blogTitle, setBlogTitle] = React.useState('');
 
+    const 
+
+    const handleCreateBlog = () =>{
+       createBlog({
+        body: blogContent.trim(),
+        orgId: '',
+        title: blogTitle,
+       }) 
+
+    };
 
     return(
         <main>
