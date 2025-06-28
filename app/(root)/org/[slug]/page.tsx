@@ -14,12 +14,16 @@ export default function OrgLandingPage(){
     const[blogContent, setBlogContent] = React.useState('');
     const[blogTitle, setBlogTitle] = React.useState('');
 
-    const 
+    const selectedOrg = useOrganization();
 
-    const handleCreateBlog = () =>{
-       createBlog({
+    console.log({ selectedOrg})
+
+    const handleCreateBlog = async () =>{
+        if(!selectedOrg.organization?.id) return
+
+      await createBlog({
         body: blogContent.trim(),
-        orgId: '',
+        orgId: selectedOrg.organization?.id,
         title: blogTitle,
        }) 
 
@@ -38,7 +42,7 @@ export default function OrgLandingPage(){
                  onChange={(e) => setBlogContent(e.target.value)}
                  className='mt-2'
                   />
-                <Button className="mt-2">Create Blog</Button>
+                <Button onClick={handleCreateBlog} className="mt-2">Create Blog</Button>
             </div>
         </main>
     );
